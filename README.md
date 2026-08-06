@@ -60,7 +60,6 @@ Metabase üzerinde aşağıdaki analizler oluşturuldu:
 - Python 3.10+
 - pgAdmin (opsiyonel, veritabanı yönetimi için)
 
-
 ##  Not
 
 Bu proje, İSKİ Veri Yönetimi ve Sistemleri Şefliği stajı sırasında edinilen gözlemlerden ilham alınarak, tamamen sahte/simüle veriyle, öğrenme amacıyla geliştirilmiştir. Gerçek İSKİ verisi veya sistemleriyle hiçbir bağlantısı yoktur.
