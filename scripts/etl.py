@@ -1,12 +1,3 @@
-"""
-İSKİ Benzeri Akıllı Su Yönetim Sistemi
-ETL Scripti (Orta Katman)
-
-Bu script:
-- iski_oltp veritabanından ham veriyi çeker (Extract)
-- Star schema formatına dönüştürür (Transform)
-- iski_dw veritabanına yükler (Load)
-"""
 
 import pandas as pd
 from sqlalchemy import create_engine
@@ -128,4 +119,4 @@ df_fact_ariza = df_ariza_src[[
 df_fact_ariza.to_sql("fact_ariza", engine_dw, if_exists="append", index=False)
 print(f"fact_ariza yüklendi: {len(df_fact_ariza)} kayıt.")
 
-print("\n✅ ETL süreci başarıyla tamamlandı! Veri ambarı dolduruldu.")
+print("\n ETL süreci başarıyla tamamlandı! Veri ambarı dolduruldu.")
