@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Ortam değişkenleri (varsa şifre/bağlantı bilgisi gibi hassas veriler)
+.env
+
+# IDE
+.vscode/
+.idea/
