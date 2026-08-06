@@ -60,46 +60,6 @@ Metabase üzerinde aşağıdaki analizler oluşturuldu:
 - Python 3.10+
 - pgAdmin (opsiyonel, veritabanı yönetimi için)
 
-### 1. PostgreSQL container'ını başlatma
-```bash
-docker run --name iski-postgres \
-  -e POSTGRES_USER=iski \
-  -e POSTGRES_PASSWORD=iski123 \
-  -e POSTGRES_DB=iski_oltp \
-  -p 5432:5432 \
-  -d postgres:16
-```
-
-### 2. Veritabanı şemasını oluşturma
-`sql/01_oltp_schema.sql` dosyasındaki komutları `iski_oltp` veritabanında çalıştır.
-
-`iski_dw` adında ikinci bir veritabanı oluştur, `sql/02_dw_schema.sql` dosyasındaki komutları orada çalıştır.
-
-### 3. Python bağımlılıklarını kurma
-```bash
-pip install pandas psycopg2-binary sqlalchemy faker
-```
-
-### 4. Örnek veri üretme
-```bash
-python3 scripts/veri_uret.py
-```
-
-### 5. ETL süreci
-```bash
-python3 scripts/etl.py
-```
-
-### 6. Metabase'i başlatma
-```bash
-docker run -d -p 3000:3000 --name iski-metabase metabase/metabase
-```
-Tarayıcıdan `http://localhost:3000` adresine git, `iski_dw` veritabanına bağlan (host: `host.docker.internal`), dashboard'u oluştur.
-
-## 🔍 Kullanılan Analiz Sorguları
-
-Tüm SQL analiz sorguları `sql/03_analiz_sorgulari.sql` dosyasında yer almaktadır.
-
 
 ##  Not
 
