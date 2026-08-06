@@ -4,7 +4,7 @@
 
 Sistem; sahte ama gerçekçi abone, sayaç okuma ve arıza verisi üretir, bunları işlemsel bir veritabanında tutar, ETL süreciyle analiz odaklı bir veri ambarına aktarır ve son olarak bir BI aracıyla görselleştirir.
 
-## 📐 Mimari
+## Mimari
 
 ```mermaid
 flowchart LR
@@ -24,7 +24,7 @@ Bu üç katman, İSKİ'deki **Veritabanı, Orta Katman ve Veri Ambarı** birimle
 | Veri Ambarı (OLAP) | Analiz odaklı, star schema | PostgreSQL |
 | Görselleştirme | Dashboard, raporlama | Metabase |
 
-## 🗂️ Veri Modeli
+## Veri Modeli
 
 ### OLTP Şeması (iski_oltp)
 - `mahalle` — mahalle/ilçe bilgisi
@@ -43,7 +43,7 @@ Bu üç katman, İSKİ'deki **Veritabanı, Orta Katman ve Veri Ambarı** birimle
 - `fact_su_tuketimi` — tüketim miktarı (tarih, abone, mahalle ile ilişkili)
 - `fact_ariza` — arıza süresi ve tipi (tarih, mahalle ile ilişkili)
 
-## 📊 Dashboard
+##  Dashboard
 
 Metabase üzerinde aşağıdaki analizler oluşturuldu:
 
@@ -56,7 +56,7 @@ Metabase üzerinde aşağıdaki analizler oluşturuldu:
 > Ekran görüntülerini `screenshots/` klasörüne ekleyip aşağıya referans verebilirsin:
 > ![Dashboard](screenshots/dashboard.png)
 
-## ⚙️ Kurulum
+##  Kurulum
 
 ### Gereksinimler
 - Docker Desktop
@@ -103,18 +103,12 @@ Tarayıcıdan `http://localhost:3000` adresine git, `iski_dw` veritabanına bağ
 
 Tüm SQL analiz sorguları `sql/03_analiz_sorgulari.sql` dosyasında yer almaktadır.
 
-## 🚀 Gelecek Geliştirmeler
 
-- [ ] Anomali tespiti (istatistiksel yöntemle olası su kaçağı tespiti)
-- [ ] ETL sürecinin Apache Airflow ile zamanlanması
-- [ ] Coğrafi harita üzerinde arıza/tüketim görselleştirmesi
-- [ ] Gerçek zamanlı (streaming) sayaç veri simülasyonu
-
-## 📌 Not
+##  Not
 
 Bu proje, İSKİ Veri Yönetimi ve Sistemleri Şefliği stajı sırasında edinilen gözlemlerden ilham alınarak, tamamen sahte/simüle veriyle, öğrenme amacıyla geliştirilmiştir. Gerçek İSKİ verisi veya sistemleriyle hiçbir bağlantısı yoktur.
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 - PostgreSQL 16
 - Python (pandas, SQLAlchemy, Faker)
