@@ -53,9 +53,6 @@ Metabase üzerinde aşağıdaki analizler oluşturuldu:
 4. **Tarife Tipine Göre Ortalama Tüketim** — konut/ticari/resmi karşılaştırması
 5. **Mevsime Göre Ortalama Tüketim** — yaz/kış tüketim farkı
 
-> Ekran görüntülerini `screenshots/` klasörüne ekleyip aşağıya referans verebilirsin:
-> ![Dashboard](screenshots/dashboard.png)
-
 ##  Kurulum
 
 ### Gereksinimler
