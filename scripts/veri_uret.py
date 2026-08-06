@@ -1,11 +1,3 @@
-"""
-İSKİ Benzeri Akıllı Su Yönetim Sistemi
-Örnek Veri Üretme Scripti
-
-Bu script:
-- Mahalle, abone, sayaç, sayaç okuma ve arıza verilerini sahte ama gerçekçi şekilde üretir
-- Doğrudan PostgreSQL (iski_oltp) veritabanına yükler
-"""
 
 import random
 from datetime import date, timedelta
@@ -162,4 +154,4 @@ df_ariza = pd.DataFrame(ariza_kayitlari)
 df_ariza.to_sql("ariza", engine, if_exists="append", index=False)
 print(f"{len(df_ariza)} arıza kaydı eklendi.")
 
-print("\n✅ Tüm örnek veriler başarıyla yüklendi!")
+print("\n Tüm örnek veriler başarıyla yüklendi!")
