@@ -4,7 +4,7 @@
 
 Sistem; sahte ama gerçekçi abone, sayaç okuma ve arıza verisi üretir, bunları işlemsel bir veritabanında tutar, ETL süreciyle analiz odaklı bir veri ambarına aktarır ve son olarak bir BI aracıyla görselleştirir.
 
-## 📐 Mimari
+## Mimari
 
 ```mermaid
 flowchart LR
@@ -24,7 +24,7 @@ Bu üç katman, İSKİ'deki **Veritabanı, Orta Katman ve Veri Ambarı** birimle
 | Veri Ambarı (OLAP) | Analiz odaklı, star schema | PostgreSQL |
 | Görselleştirme | Dashboard, raporlama | Metabase |
 
-## 🗂️ Veri Modeli
+## Veri Modeli
 
 ### OLTP Şeması (iski_oltp)
 - `mahalle` — mahalle/ilçe bilgisi
@@ -46,7 +46,7 @@ Bu üç katman, İSKİ'deki **Veritabanı, Orta Katman ve Veri Ambarı** birimle
 **Analiz tablosu:**
 - `anomali_kayitlari` — z-skoru yöntemiyle tespit edilen anormal tüketim kayıtları
 
-## 📊 Dashboard
+## Dashboard
 
 Metabase üzerinde aşağıdaki analizler oluşturuldu:
 
@@ -56,78 +56,26 @@ Metabase üzerinde aşağıdaki analizler oluşturuldu:
 4. **Tarife Tipine Göre Ortalama Tüketim** — konut/ticari/resmi karşılaştırması
 5. **Mevsime Göre Ortalama Tüketim** — yaz/kış tüketim farkı
 
-> Ekran görüntülerini `screenshots/` klasörüne ekleyip aşağıya referans verebilirsin:
-> ![Dashboard](screenshots/dashboard.png)
-
-## ⚙️ Kurulum
+## Kurulum
 
 ### Gereksinimler
 - Docker Desktop
 - Python 3.10+
 - pgAdmin (opsiyonel, veritabanı yönetimi için)
 
-### 1. PostgreSQL container'ını başlat
-```bash
-docker run --name iski-postgres \
-  -e POSTGRES_USER=iski \
-  -e POSTGRES_PASSWORD=iski123 \
-  -e POSTGRES_DB=iski_oltp \
-  -p 5432:5432 \
-  -d postgres:16
-```
-
-### 2. Veritabanı şemasını oluştur
-`sql/01_oltp_schema.sql` dosyasındaki komutları `iski_oltp` veritabanında çalıştır.
-
-`iski_dw` adında ikinci bir veritabanı oluştur, `sql/02_dw_schema.sql` dosyasındaki komutları orada çalıştır.
-
-### 3. Python bağımlılıklarını kur
-```bash
-pip install pandas psycopg2-binary sqlalchemy faker
-```
-
-### 4. Örnek veri üret
-```bash
-python3 scripts/veri_uret.py
-```
-
-### 5. ETL sürecini çalıştır
-```bash
-python3 scripts/etl.py
-```
-
-### 6. Metabase'i başlat
-```bash
-docker run -d -p 3000:3000 --name iski-metabase metabase/metabase
-```
-Tarayıcıdan `http://localhost:3000` adresine git, `iski_dw` veritabanına bağlan (host: `host.docker.internal`), dashboard'u oluştur.
-
-## 🔍 Kullanılan Analiz Sorguları
+## Kullanılan Analiz Sorguları
 
 Tüm SQL analiz sorguları `sql/03_analiz_sorgulari.sql` dosyasında yer almaktadır.
 
-## 🚨 Anomali Tespiti
+## Anomali Tespiti
 
 `scripts/anomali_tespit.py`, her abonenin **kendi geçmiş tüketim ortalaması ve standart sapmasına** göre z-skoru hesaplayarak, normalin dışına çıkan (|z| ≥ 2) okumaları **anomali** olarak işaretler. Bu, olası su kaçağı, sayaç arızası veya anormal kullanım gibi durumları erken yakalamayı amaçlar.
 
-Sonuçlar `iski_dw` içindeki `anomali_kayitlari` tablosuna yazılır ve Metabase'de ayrı bir rapor olarak görselleştirilir. Analiz sorguları `sql/05_anomali_sorgulari.sql` dosyasındadır.
-
-```bash
-python3 scripts/anomali_tespit.py
-```
-
-## 🚀 Gelecek Geliştirmeler
-
-- [x] Anomali tespiti (istatistiksel yöntemle olası su kaçağı tespiti)
-- [ ] ETL sürecinin Apache Airflow ile zamanlanması
-- [ ] Coğrafi harita üzerinde arıza/tüketim görselleştirmesi
-- [ ] Gerçek zamanlı (streaming) sayaç veri simülasyonu
-
-## 📌 Not
+## Not
 
 Bu proje, İSKİ Veri Yönetimi ve Sistemleri Şefliği stajı sırasında edinilen gözlemlerden ilham alınarak, tamamen sahte/simüle veriyle, öğrenme amacıyla geliştirilmiştir. Gerçek İSKİ verisi veya sistemleriyle hiçbir bağlantısı yoktur.
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 - PostgreSQL 16
 - Python (pandas, SQLAlchemy, Faker)
