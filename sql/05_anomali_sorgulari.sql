@@ -1,8 +1,7 @@
--- ============================================
--- ANOMALİ ANALİZ SORGULARI (iski_dw veritabanında çalıştırılır)
+
+-- ANOMALİ ANALİZ SORGULARI
 -- Anomali tespit scriptinin (scripts/anomali_tespit.py) ürettiği
 -- anomali_kayitlari tablosu üzerinden çalışır
--- ============================================
 
 -- 1. Anomali Tespit Raporu (detaylı liste)
 SELECT 
