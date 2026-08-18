@@ -1,6 +1,5 @@
--- ============================================
--- ANOMALİ KAYITLARI TABLOSU (iski_dw veritabanında çalıştırılmalı)
--- ============================================
+
+-- ANOMALİ KAYITLARI TABLOSU 
 
 CREATE TABLE anomali_kayitlari (
     anomali_id        SERIAL PRIMARY KEY,
