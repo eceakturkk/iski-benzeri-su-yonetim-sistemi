@@ -1,6 +1,5 @@
--- ============================================
--- OLTP ŞEMASI (iski_oltp veritabanında çalıştırılmalı)
--- ============================================
+
+-- OLTP ŞEMASI 
 
 -- 1. MAHALLE tablosu
 CREATE TABLE mahalle (
