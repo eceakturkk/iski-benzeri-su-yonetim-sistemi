@@ -1,7 +1,6 @@
--- ============================================
--- ANALİZ SORGULARI (iski_dw veritabanında çalıştırılır)
--- Metabase dashboard'undaki 5 grafiğin kaynağıdır
--- ============================================
+
+-- ANALİZ SORGULARI
+-- Metabase dashboard'undaki 5 grafiğin kaynağı
 
 -- 1. Mahalle bazlı toplam tüketim
 SELECT 
