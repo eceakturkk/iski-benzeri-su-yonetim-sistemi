@@ -1,10 +1,6 @@
--- ============================================
--- VERİ AMBARI ŞEMASI - STAR SCHEMA (iski_dw veritabanında çalıştırılmalı)
--- ============================================
 
--- ============================================
+-- VERİ AMBARI ŞEMASI - STAR SCHEMA 
 -- DIMENSION TABLOLARI
--- ============================================
 
 -- 1. dim_zaman
 CREATE TABLE dim_zaman (
