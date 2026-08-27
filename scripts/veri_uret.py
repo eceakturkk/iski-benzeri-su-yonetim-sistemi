@@ -9,8 +9,8 @@ from sqlalchemy import create_engine
 # ---------------------------------------------------------
 # 1. VERİTABANI BAĞLANTISI
 # ---------------------------------------------------------
-DB_USER = "iski"
-DB_PASS = "iski123"
+DB_USER = "eticaret"
+DB_PASS = "eticaret123"
 DB_HOST = "localhost"
 DB_PORT = "5432"
 DB_NAME = "iski_oltp"
