@@ -1,19 +1,9 @@
 """
-İSKİ Benzeri Akıllı Su Yönetim Sistemi
 Gelişmiş Talep Tahmini (Prophet)
 
 Bu script, basit hareketli ortalama yönteminin (tahmin.py) yerine/yanına
 Facebook/Meta'nın geliştirdiği Prophet kütüphanesiyle gerçek bir zaman
 serisi modeli kurar.
-
-Prophet, hareketli ortalamadan farklı olarak:
-- Trend'i (genel artış/azalış eğilimini) ayrı modeller
-- Güven aralığı (alt sınır / üst sınır) üretir
-- Endüstride (Uber, Facebook vb.) üretimde kullanılan, olgun bir kütüphanedir
-
-Not: Veri setimiz sadece 12 aylık geçmiş içerdiği için (1 yıl), yıllık
-mevsimsellik güvenilir şekilde öğrenilemez -> bilinçli olarak kapatılmıştır.
-Bu, kısa geçmişli veri setlerinde dürüst ve doğru bir modelleme kararıdır.
 """
 
 import logging
@@ -39,7 +29,7 @@ print("Prophet ile talep tahmini başlıyor...\n")
 
 # ---------------------------------------------------------
 # 1. VERİYİ ÇEK — mahalle + ay bazında toplam tüketim
-# ---------------------------------------------------------
+
 df = pd.read_sql("""
     SELECT 
         f.mahalle_id,
@@ -59,7 +49,7 @@ print(f"{df['mahalle_id'].nunique()} mahalle için model kurulacak.\n")
 
 # ---------------------------------------------------------
 # 2. HER MAHALLE İÇİN AYRI PROPHET MODELİ KUR
-# ---------------------------------------------------------
+
 tahmin_kayitlari = []
 
 for mahalle_id, grup in df.groupby("mahalle_id"):
@@ -68,7 +58,7 @@ for mahalle_id, grup in df.groupby("mahalle_id"):
 
     if len(grup_prophet) < 4:
         # Prophet için çok az veri varsa bu mahalleyi atla
-        print(f"⚠️  Mahalle {mahalle_id}: yetersiz veri, atlanıyor.")
+        print(f" Mahalle {mahalle_id}: yetersiz veri, atlanıyor.")
         continue
 
     # Sadece 1 yıllık veri olduğu için yıllık/haftalık mevsimselliği kapatıyoruz
@@ -98,18 +88,18 @@ for mahalle_id, grup in df.groupby("mahalle_id"):
             "yontem": YONTEM_ADI,
         })
 
-    print(f"✅ Mahalle {mahalle_id}: {TAHMIN_AY_SAYISI} aylık tahmin üretildi.")
+    print(f" Mahalle {mahalle_id}: {TAHMIN_AY_SAYISI} aylık tahmin üretildi.")
 
 df_tahmin = pd.DataFrame(tahmin_kayitlari)
 
 # ---------------------------------------------------------
 # 3. YÜKLE — fact_tahmin tablosuna yaz (hareketli ortalama ile aynı tablo,
 #    farklı "yontem" değeriyle - böylece dashboard'da iki yöntemi karşılaştırabiliriz)
-# ---------------------------------------------------------
+
 df_tahmin.to_sql("fact_tahmin", engine_dw, if_exists="append", index=False)
 
 print(f"\n{'='*50}")
-print(f"✅ {len(df_tahmin)} Prophet tahmini 'fact_tahmin' tablosuna yazıldı.")
+print(f" {len(df_tahmin)} Prophet tahmini 'fact_tahmin' tablosuna yazıldı.")
 print(f"{'='*50}")
 print("\n--- Örnek tahminler (ilk 10) ---")
 print(df_tahmin.head(10).to_string(index=False))
