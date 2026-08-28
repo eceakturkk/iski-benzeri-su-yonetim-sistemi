@@ -1,9 +1,8 @@
 -- ============================================
--- TALEP TAHMİNİ TABLOSU (iski_dw veritabanında çalıştırılmalı)
+-- TALEP TAHMİNİ TABLOSU
 -- Hem hareketli ortalama (scripts/tahmin.py) hem de Prophet
 -- (scripts/prophet_tahmin.py) sonuçları bu tabloya, "yontem" sütunuyla
 -- ayrıştırılarak yazılır.
--- ============================================
 
 CREATE TABLE fact_tahmin (
     tahmin_id         SERIAL PRIMARY KEY,
