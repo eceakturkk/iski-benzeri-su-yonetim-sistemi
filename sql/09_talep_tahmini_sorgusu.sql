@@ -1,9 +1,8 @@
 -- ============================================
--- TALEP TAHMİNİ SORGUSU (iski_dw veritabanında çalıştırılır)
+-- TALEP TAHMİNİ SORGUSU
 -- fact_tahmin tablosu hem hareketli ortalama (scripts/tahmin.py) hem de
 -- Prophet (scripts/prophet_tahmin.py) sonuçlarını "yontem" sütunuyla
 -- ayrıştırılmış şekilde tutar - bu sorgu ikisini karşılaştırmalı gösterir.
--- ============================================
 
 SELECT 
     m.mahalle_adi,
