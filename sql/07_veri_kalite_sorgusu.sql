@@ -1,8 +1,7 @@
 -- ============================================
--- VERİ KALİTESİ RAPORU SORGUSU (iski_dw veritabanında çalıştırılır)
+-- VERİ KALİTESİ RAPORU SORGUSU
 -- Analiz scriptinin (scripts/veri_kalite_kontrolu.py) ürettiği
 -- data_kalite_raporu tablosu üzerinden çalışır
--- ============================================
 
 SELECT 
     kontrol_adi,
