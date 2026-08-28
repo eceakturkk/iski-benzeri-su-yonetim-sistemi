@@ -1,6 +1,5 @@
 -- ============================================
--- VERİ KALİTESİ RAPORU TABLOSU (iski_dw veritabanında çalıştırılmalı)
--- ============================================
+-- VERİ KALİTESİ RAPORU TABLOSU 
 
 CREATE TABLE data_kalite_raporu (
     kontrol_id      SERIAL PRIMARY KEY,
